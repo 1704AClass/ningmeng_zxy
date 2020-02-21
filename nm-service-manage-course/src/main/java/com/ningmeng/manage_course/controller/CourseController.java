@@ -25,20 +25,6 @@ public class CourseController implements CourseControllerApi {
     @Autowired
     private CategoryService categoryService;
 
-    //分类查询
-    @GetMapping("/category/findCategoryList/{parentId}")
-    @Override
-    public CategoryNode findCategoryList(@PathVariable("parentId") String parentId) {
-        return categoryService.findCategoryList(parentId);
-    }
-
-    //查询字典
-    @GetMapping("/sysDictionary/getByType/{type}")
-    @Override
-    public SysDictionary getByType(@PathVariable("type") String type) {
-        return categoryService.getByType(type);
-    }
-
     //获取课程基础信息
     @GetMapping("/course/getCourseBaseById/{courseId}")
     @Override

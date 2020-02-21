@@ -31,12 +31,6 @@ public interface CourseControllerApi {
     @ApiOperation("新增课程")
     public ResponseResult addCourseBase(CourseBase courseBase);
 
-    @ApiOperation("查询分类")
-    public CategoryNode findCategoryList(String parentId);
-
-    @ApiOperation(value="数据字典查询接口")
-    public SysDictionary getByType(String type);
-
     @ApiOperation("获取课程基础信息")
     public CourseBase getCourseBaseById(String courseId) throws RuntimeException;
 

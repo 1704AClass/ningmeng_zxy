@@ -13,6 +13,7 @@
         <module>../nm-service-manage-course</module>
         <module>../test-rabbitmq-producer</module>
         <module>../test-rabbitmq-consumer</module>
+        <module>../nm-service-base-filesystem</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

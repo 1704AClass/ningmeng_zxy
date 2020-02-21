@@ -6,6 +6,7 @@ import com.ningmeng.framework.domain.course.CourseBase;
 import com.ningmeng.framework.domain.course.CourseMarket;
 import com.ningmeng.framework.domain.course.Teachplan;
 import com.ningmeng.framework.domain.course.ext.CourseInfo;
+import com.ningmeng.framework.domain.course.response.AddCourseResult;
 import com.ningmeng.framework.exception.CustomExceptionCast;
 import com.ningmeng.framework.model.response.CommonCode;
 import com.ningmeng.framework.model.response.QueryResponseResult;
@@ -37,11 +38,10 @@ public class CourseService {
 
     //新增课程
     public ResponseResult addCourseBase(CourseBase courseBase){
-        if(courseBase == null){
-            CustomExceptionCast.cast(CommonCode.FAIL);
-        }
+        //课程状态默认为未发布
+        courseBase.setStatus("202001");
         courseBaseRepository.save(courseBase);
-        return new ResponseResult(CommonCode.SUCCESS);
+        return new AddCourseResult(CommonCode.SUCCESS,courseBase.getId());
     }
 
     //查询课程计划
@@ -140,10 +140,11 @@ public class CourseService {
     }
     //获取课程基础信息
     public CourseBase getCourseBaseById(String courseId) {
-        if(courseId == null || "".equals(courseId)){
-            CustomExceptionCast.cast(CommonCode.FAIL);
+        Optional<CourseBase> optional = courseBaseRepository.findById(courseId);
+        if(optional.isPresent()){
+            return optional.get();
         }
-        return courseBaseRepository.findById(courseId).get();
+        return null;
     }
     //更新课程基础信息
     public ResponseResult updateCourseBase(CourseBase courseBase) {
