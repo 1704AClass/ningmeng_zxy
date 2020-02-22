@@ -14,6 +14,7 @@
         <module>../test-rabbitmq-producer</module>
         <module>../test-rabbitmq-consumer</module>
         <module>../nm-service-base-filesystem</module>
+        <module>../nm-govern-center</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
