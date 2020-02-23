@@ -95,6 +95,7 @@ public class CmsPageService {
     public CmsPage getById(String id){
         Optional<CmsPage> optional = cmsPageRepository.findById(id);
         if(optional.isPresent()){
+            System.out.println("--------------:"+optional.get());
             return  optional.get();
         }
         return  null;

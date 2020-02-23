@@ -34,7 +34,7 @@ public class CmsPageController implements CmsPageControllerApi {
     //根据id查询页面
     @Override
     @GetMapping("/findById/{id}")
-    public CmsPage findById(String id) {
+    public CmsPage findById(@PathVariable String id) {
         return cmsPageService.getById(id);
     }
     //更新页面

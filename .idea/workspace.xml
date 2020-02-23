@@ -78,6 +78,7 @@
       <change afterPath="$PROJECT_DIR$/nm-service-base-filesystem/src/main/java/com/ningmeng/filesystem/controller/FileSystemController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/nm-service-base-filesystem/src/main/java/com/ningmeng/filesystem/dao/FileSystemRepository.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/nm-service-base-filesystem/src/main/java/com/ningmeng/filesystem/service/FileSystemService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nm-service-manage-course/src/main/java/com/ningmeng/manage_course/client/CmsPageClient.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/nm-service-manage-course/src/main/java/com/ningmeng/manage_course/controller/CategoryController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/nm-service-manage-course/src/main/java/com/ningmeng/manage_course/controller/SysDictionaryController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/nm-service-manage-course/src/main/java/com/ningmeng/manage_course/dao/CategoryMapper.java" afterDir="false" />
@@ -87,15 +88,21 @@
       <change afterPath="$PROJECT_DIR$/nm-service-manage-course/src/main/java/com/ningmeng/manage_course/service/CategoryService.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/nm-service-manage-course/src/main/java/com/ningmeng/manage_course/service/SysdictionaryService.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/nm-service-manage-course/src/main/resources/com/ningmeng/manage_course/dao/CategoryMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nm-service-manage-course/src/test/java/com/ningmeng/manage_course/dao/TestFeign.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nm-service-manage-course/src/test/java/com/ningmeng/manage_course/dao/Tests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nm-framework-common/src/main/java/com/ningmeng/framework/client/NmServiceList.java" beforeDir="false" afterPath="$PROJECT_DIR$/nm-framework-common/src/main/java/com/ningmeng/framework/client/NmServiceList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nm-framework-model/src/main/java/com/ningmeng/framework/domain/cms/CmsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/nm-framework-model/src/main/java/com/ningmeng/framework/domain/cms/CmsPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nm-framework-parent/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nm-framework-parent/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nm-service-api/src/main/java/com/ningmeng/api/courseapi/CourseControllerApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/nm-service-api/src/main/java/com/ningmeng/api/courseapi/CourseControllerApi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nm-service-manage-cms/nm-service-manage-cms.iml" beforeDir="false" afterPath="$PROJECT_DIR$/nm-service-manage-cms/nm-service-manage-cms.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nm-service-manage-cms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nm-service-manage-cms/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nm-service-manage-cms/src/main/java/com/ningmeng/manage_cms/ManageCmsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/nm-service-manage-cms/src/main/java/com/ningmeng/manage_cms/ManageCmsApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nm-service-manage-cms/src/main/java/com/ningmeng/manage_cms/controller/CmsPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/nm-service-manage-cms/src/main/java/com/ningmeng/manage_cms/controller/CmsPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nm-service-manage-cms/src/main/java/com/ningmeng/manage_cms/service/CmsPageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/nm-service-manage-cms/src/main/java/com/ningmeng/manage_cms/service/CmsPageService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nm-service-manage-cms/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/nm-service-manage-cms/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nm-service-manage-course/nm-service-manage-course.iml" beforeDir="false" afterPath="$PROJECT_DIR$/nm-service-manage-course/nm-service-manage-course.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nm-service-manage-course/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nm-service-manage-course/pom.xml" afterDir="false" />
@@ -134,6 +141,12 @@
     <SUITE FILE_PATH="coverage/nm_CMS_1704A$ManageCourseApplication.ic" NAME="ManageCourseApplication Coverage Results" MODIFIED="1582167835188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.ningmeng.manage_course.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/nm_CMS_1704A$TestFeign_testFeign.ic" NAME="TestFeign.testFeign Coverage Results" MODIFIED="1582439670698" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.ningmeng.manage_course.dao.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/nm_CMS_1704A$Tests_testRibbon.ic" NAME="Tests.testRibbon Coverage Results" MODIFIED="1582379177932" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.ningmeng.manage_course.dao.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/nm_CMS_1704A$TestDao_testCourseMapper.ic" NAME="TestDao.testCourseMapper Coverage Results" MODIFIED="1582024794553" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.ningmeng.manage_course.dao.*</FILTER>
     </SUITE>
@@ -145,7 +158,7 @@
     </SUITE>
   </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="146" />
+    <option name="myElementSize" value="70" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-235099489">
@@ -153,47 +166,48 @@
         <counts>
           <entry key="class" value="15" />
           <entry key="iml" value="4" />
-          <entry key="java" value="204" />
-          <entry key="xml" value="46" />
-          <entry key="yml" value="16" />
+          <entry key="java" value="215" />
+          <entry key="xml" value="47" />
+          <entry key="yml" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="15" />
           <entry key="IDEA_MODULE" value="4" />
-          <entry key="JAVA" value="204" />
-          <entry key="XML" value="46" />
-          <entry key="YAML" value="16" />
+          <entry key="JAVA" value="215" />
+          <entry key="XML" value="47" />
+          <entry key="YAML" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="1" />
-          <entry key="java" value="3518" />
+          <entry key="java" value="3725" />
           <entry key="txt" value="4" />
-          <entry key="xml" value="535" />
-          <entry key="yml" value="183" />
+          <entry key="xml" value="594" />
+          <entry key="yml" value="205" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="3518" />
+          <entry key="JAVA" value="3725" />
           <entry key="PLAIN_TEXT" value="5" />
           <entry key="SQL" value="27" />
-          <entry key="XML" value="508" />
-          <entry key="YAML" value="183" />
+          <entry key="XML" value="567" />
+          <entry key="YAML" value="205" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.21" value="1" />
           <entry key="project.open.time.24" value="1" />
+          <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.38" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
     </session>
@@ -206,8 +220,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nm-service-manage-cms/src/main/java/com/ningmeng/manage_cms/ManageCmsApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="18" column="27" lean-forward="true" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="28" />
+            <state relative-caret-position="434">
+              <caret line="18" column="26" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -215,11 +229,97 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nm-service-manage-course/src/main/java/com/ningmeng/manage_course/ManageCourseApplication.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="233">
+              <caret line="25" column="25" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1190#1191#0" expanded="true" />
+                <element signature="e#1269#1270#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nm-service-manage-course/src/test/java/com/ningmeng/manage_course/dao/Tests.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="375">
-              <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="27" />
+              <caret line="34" selection-start-line="34" selection-end-line="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nm-service-manage-course/src/test/java/com/ningmeng/manage_course/dao/TestFeign.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nm-service-manage-course/src/main/java/com/ningmeng/manage_course/client/CmsPageClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nm-framework-common/src/main/java/com/ningmeng/framework/client/NmServiceList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="9" column="73" selection-start-line="9" selection-start-column="67" selection-end-line="9" selection-end-column="73" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nm-framework-model/src/main/java/com/ningmeng/framework/domain/cms/CmsPage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="20" column="25" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nm-service-manage-course/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="98" column="21" selection-start-line="98" selection-start-column="21" selection-end-line="98" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/nm-service-manage-cms/src/main/java/com/ningmeng/manage_cms/controller/CmsPageController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="39" column="10" lean-forward="true" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nm-service-manage-cms/src/main/java/com/ningmeng/manage_cms/service/CmsPageService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="97" column="49" lean-forward="true" selection-start-line="97" selection-start-column="49" selection-end-line="97" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -229,8 +329,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -241,11 +341,13 @@
       <find>com.ningmeng.framework.domain.course.ext.TeachplanNode</find>
       <find>cloud</find>
       <find>‐</find>
+      <find>XC</find>
     </findStrings>
     <replaceStrings>
       <replace>import com.ningmeng.framework.domain.course.ext.TeachplanNode;</replace>
       <replace>com.ningmeng.framework.domain.course.ext.CategoryNode</replace>
       <replace>-</replace>
+      <replace>NM</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -260,9 +362,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/nm-service-api/src/main/java/com/ningmeng/api/cmsapi/CmsPageControllerApi.java" />
-        <option value="$PROJECT_DIR$/nm-service-manage-cms-client/src/main/java/com/ningmeng/manage_cms_client/mq/ConsumerPostPage.java" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
         <option value="$PROJECT_DIR$/nm-service-manage-course/src/main/java/com/ningmeng/manage_course/pojo/TeachplanNode.java" />
         <option value="$PROJECT_DIR$/nm-framework-model/src/main/java/com/ningmeng/framework/domain/course/ext/TeachplanNode.java" />
         <option value="$PROJECT_DIR$/nm-service-manage-course/src/main/java/com/ningmeng/manage_course/dao/TeachplanRepository.java" />
@@ -302,10 +401,18 @@
         <option value="$PROJECT_DIR$/nm-govern-center/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/nm-service-manage-cms/pom.xml" />
         <option value="$PROJECT_DIR$/nm-service-manage-cms/src/main/java/com/ningmeng/manage_cms/ManageCmsApplication.java" />
-        <option value="$PROJECT_DIR$/nm-service-manage-course/pom.xml" />
-        <option value="$PROJECT_DIR$/nm-service-manage-course/src/main/java/com/ningmeng/manage_course/ManageCourseApplication.java" />
         <option value="$PROJECT_DIR$/nm-service-manage-course/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/nm-service-manage-cms/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/nm-service-manage-course/src/test/java/com/ningmeng/manage_course/dao/Test.java" />
+        <option value="$PROJECT_DIR$/nm-framework-model/src/main/java/com/ningmeng/framework/domain/cms/CmsPage.java" />
+        <option value="$PROJECT_DIR$/nm-service-manage-course/pom.xml" />
+        <option value="$PROJECT_DIR$/nm-framework-common/src/main/java/com/ningmeng/framework/client/NmServiceList.java" />
+        <option value="$PROJECT_DIR$/nm-service-manage-course/src/main/java/com/ningmeng/manage_course/client/CmsPageClient.java" />
+        <option value="$PROJECT_DIR$/nm-service-manage-course/src/main/java/com/ningmeng/manage_course/ManageCourseApplication.java" />
+        <option value="$PROJECT_DIR$/nm-service-manage-course/src/test/java/com/ningmeng/manage_course/dao/Tests.java" />
+        <option value="$PROJECT_DIR$/nm-service-manage-course/src/test/java/com/ningmeng/manage_course/dao/TestFeign.java" />
+        <option value="$PROJECT_DIR$/nm-service-manage-cms/src/main/java/com/ningmeng/manage_cms/service/CmsPageService.java" />
+        <option value="$PROJECT_DIR$/nm-service-manage-cms/src/main/java/com/ningmeng/manage_cms/controller/CmsPageController.java" />
       </list>
     </option>
   </component>
@@ -320,15 +427,29 @@
       <expand>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="nm-govern-center" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="nm-framework-parent" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="nm-framework-parent" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="nm-service-manage-course" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="nm-service-manage-course" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
         </path>
       </expand>
       <select />
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="732" />
+    <option name="y" value="637" />
     <option name="width" value="1194" />
     <option name="height" value="782" />
   </component>
@@ -340,6 +461,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -350,44 +473,52 @@
             <path>
               <item name="nm-CMS-1704A" type="b2602c69:ProjectViewProjectNode" />
               <item name="nm-CMS-1704A" type="462c0819:PsiDirectoryNode" />
-              <item name="nm-service-manage-course" type="462c0819:PsiDirectoryNode" />
+              <item name="nm-service-manage-cms" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="nm-CMS-1704A" type="b2602c69:ProjectViewProjectNode" />
               <item name="nm-CMS-1704A" type="462c0819:PsiDirectoryNode" />
-              <item name="nm-service-manage-course" type="462c0819:PsiDirectoryNode" />
+              <item name="nm-service-manage-cms" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="nm-CMS-1704A" type="b2602c69:ProjectViewProjectNode" />
               <item name="nm-CMS-1704A" type="462c0819:PsiDirectoryNode" />
-              <item name="nm-service-manage-course" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="nm-CMS-1704A" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nm-CMS-1704A" type="462c0819:PsiDirectoryNode" />
-              <item name="nm-service-manage-course" type="462c0819:PsiDirectoryNode" />
+              <item name="nm-service-manage-cms" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="nm-CMS-1704A" type="b2602c69:ProjectViewProjectNode" />
               <item name="nm-CMS-1704A" type="462c0819:PsiDirectoryNode" />
-              <item name="nm-service-manage-course" type="462c0819:PsiDirectoryNode" />
+              <item name="nm-service-manage-cms" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="manage_course" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nm-CMS-1704A" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nm-CMS-1704A" type="462c0819:PsiDirectoryNode" />
+              <item name="nm-service-manage-cms" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="manage_cms" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nm-CMS-1704A" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nm-CMS-1704A" type="462c0819:PsiDirectoryNode" />
+              <item name="nm-service-manage-cms" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="manage_cms" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -399,7 +530,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://E:/cms/idea/nm-CMS-1704A/nm-framework-common/src/main/java/com/ningmeng/framework/exception/ExceptionCatch.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1582305628009" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1582439782595" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/nm-service-base-filesystem" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -428,8 +559,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ManageCourseApplication">
-    <configuration name="TestDao.findByDType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.TestFeign.testFeign">
+    <configuration name="TestFeign.testFeign" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="nm-service-manage-course" />
       <extension name="coverage">
         <pattern>
@@ -438,22 +569,25 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.ningmeng.manage_course.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.ningmeng.manage_course.dao.TestDao" />
-      <option name="METHOD_NAME" value="findByDType" />
+      <option name="MAIN_CLASS_NAME" value="com.ningmeng.manage_course.dao.TestFeign" />
+      <option name="METHOD_NAME" value="testFeign" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FileSystemApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="nm-service-base-filesystem" />
+    <configuration name="Tests.testRibbon" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="nm-service-manage-course" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ningmeng.filesystem.*" />
+          <option name="PATTERN" value="com.ningmeng.manage_course.dao.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ningmeng.filesystem.FileSystemApplication" />
+      <option name="PACKAGE_NAME" value="com.ningmeng.manage_course.dao" />
+      <option name="MAIN_CLASS_NAME" value="com.ningmeng.manage_course.dao.Tests" />
+      <option name="METHOD_NAME" value="testRibbon" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -514,6 +648,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ManageCmsApplication31002" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="nm-service-manage-cms" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ningmeng.manage_cms.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ningmeng.manage_cms.ManageCmsApplication" />
+      <option name="VM_PARAMETERS" value="-DPORT=31002 -DEUREKA_SERVER=http://eureka01:50101/eureka/ -DIP_ADDRESS=127.0.0.1" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ManageCourseApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="nm-service-manage-course" />
       <extension name="coverage">
@@ -530,19 +679,20 @@
     <list>
       <item itemvalue="Spring Boot.Govern01" />
       <item itemvalue="Spring Boot.Govern02" />
-      <item itemvalue="JUnit.TestDao.findByDType" />
+      <item itemvalue="Spring Boot.ManageCmsApplication31002" />
       <item itemvalue="Spring Boot.ManageCourseApplication" />
-      <item itemvalue="Spring Boot.FileSystemApplication" />
       <item itemvalue="Spring Boot.GovernCenterApplication" />
       <item itemvalue="Spring Boot.ManageCmsApplication" />
+      <item itemvalue="JUnit.Tests.testRibbon" />
+      <item itemvalue="JUnit.TestFeign.testFeign" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestFeign.testFeign" />
         <item itemvalue="Spring Boot.ManageCourseApplication" />
         <item itemvalue="Spring Boot.ManageCmsApplication" />
+        <item itemvalue="JUnit.Tests.testRibbon" />
         <item itemvalue="Spring Boot.GovernCenterApplication" />
-        <item itemvalue="Spring Boot.FileSystemApplication" />
-        <item itemvalue="JUnit.TestDao.findByDType" />
       </list>
     </recent_temporary>
   </component>
@@ -563,6 +713,7 @@
       <workItem from="1582163578083" duration="12116000" />
       <workItem from="1582250981133" duration="5309000" />
       <workItem from="1582278945768" duration="10485000" />
+      <workItem from="1582371190919" duration="12214000" />
     </task>
     <task id="LOCAL-00001" summary="柠檬项目">
       <created>1581913121868</created>
@@ -589,27 +740,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestDao_testCourseBaseRepository - 2020.02.18 at 19h 19m 44s.xml">
-      <configuration name="TestDao.testCourseBaseRepository" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestDao_testCourseMapper - 2020.02.18 at 19h 20m 25s.xml">
-      <configuration name="TestDao.testCourseMapper" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestDao_findByDType - 2020.02.20 at 11h 59m 15s.xml">
-      <configuration name="TestDao.findByDType" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestDao_findByDType - 2020.02.20 at 12h 00m 26s.xml">
-      <configuration name="TestDao.findByDType" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestDao_findByDType - 2020.02.20 at 12h 02m 44s.xml">
-      <configuration name="TestDao.findByDType" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestDao_findByDType - 2020.02.20 at 12h 03m 56s.xml">
-      <configuration name="TestDao.findByDType" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestDao_findByDType - 2020.02.20 at 12h 07m 14s.xml">
-      <configuration name="TestDao.findByDType" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="TestDao_findByDType - 2020.02.20 at 12h 09m 48s.xml">
       <configuration name="TestDao.findByDType" configurationId="JUnit" />
     </history-entry>
@@ -619,14 +749,35 @@
     <history-entry file="TestDao_findByDType - 2020.02.20 at 20h 13m 11s.xml">
       <configuration name="TestDao.findByDType" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="Tests_testRibbon - 2020.02.22 at 21h 22m 50s.xml">
+      <configuration name="Tests.testRibbon" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Tests_testRibbon - 2020.02.22 at 21h 29m 01s.xml">
+      <configuration name="Tests.testRibbon" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Tests_testRibbon - 2020.02.22 at 21h 38m 18s.xml">
+      <configuration name="Tests.testRibbon" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Tests_testRibbon - 2020.02.22 at 21h 47m 05s.xml">
+      <configuration name="Tests.testRibbon" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestFeign_testFeign - 2020.02.22 at 22h 13m 05s.xml">
+      <configuration name="TestFeign.testFeign" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestFeign_testFeign - 2020.02.22 at 23h 46m 26s.xml">
+      <configuration name="TestFeign.testFeign" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestFeign_testFeign - 2020.02.23 at 14h 35m 22s.xml">
+      <configuration name="TestFeign.testFeign" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61102000" />
+    <option name="totallyTimeSpent" value="73316000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49921754" visible="true" weight="0.2228145" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49921754" visible="true" weight="0.2249467" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -636,26 +787,26 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" weight="0.2548807" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" weight="0.345987" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Debug" order="5" sideWeight="0.4989339" weight="0.47071582" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Spring" order="7" weight="0.32936078" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32936078" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5010661" side_tool="true" weight="0.31344903" />
-      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49946696" weight="0.5178849" />
-      <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.3286334" />
+      <window_info anchor="bottom" id="Java Enterprise" order="7" weight="0.3286334" />
+      <window_info anchor="bottom" id="Spring" order="8" weight="0.3286334" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32936078" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5010661" side_tool="true" weight="0.31344903" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49946696" weight="0.5173536" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="13" sideWeight="0.49946696" weight="0.329718" />
-      <window_info anchor="right" id="Coverage" order="0" sideWeight="0.50207037" side_tool="true" visible="true" weight="0.15778251" />
+      <window_info anchor="right" id="Coverage" order="0" sideWeight="0.5041459" side_tool="true" weight="0.47121534" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="right" x="0" y="0" width="434" height="856" id="Documentation" order="6" sideWeight="0.50080776" side_tool="true" weight="0.32995737" />
-      <window_info anchor="right" id="Maven Projects" order="7" sideWeight="0.4979296" visible="true" weight="0.3065032" />
+      <window_info anchor="right" id="Maven Projects" order="7" sideWeight="0.49585405" weight="0.47121534" />
       <window_info anchor="right" id="Database" order="8" weight="0.32995737" />
       <window_info anchor="right" id="Palette&#9;" order="9" />
       <window_info anchor="right" id="Theme Preview" order="10" />
@@ -685,55 +836,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="柠檬项目2.19" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/nm-service-manage-course/src/main/java/com/ningmeng/manage_course/dao/CourseBaseRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="8" column="59" selection-start-line="8" selection-start-column="46" selection-end-line="8" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nm-service-manage-course/src/main/java/com/ningmeng/manage_course/dao/CourseMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.0.5.RELEASE/spring-webmvc-5.0.5.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/ServletInvocableHandlerMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="48" column="16" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.0.5.RELEASE/spring-aop-5.0.5.RELEASE.jar!/org/springframework/aop/support/AopUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="76" selection-start-line="76" selection-end-line="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nm-framework-model/src/main/java/com/ningmeng/framework/domain/system/SysDictionary.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="17" column="21" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nm-service-manage-cms/src/main/java/com/ningmeng/manage_cms/dao/CmsPageRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="12" column="26" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.5.RELEASE/spring-web-5.0.5.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="217" selection-start-line="217" selection-end-line="217" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_91/jre/lib/rt.jar!/sun/reflect/NativeMethodAccessorImpl.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="271">
@@ -745,13 +847,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
           <caret line="497" selection-start-line="497" selection-end-line="497" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nm-service-manage-course/src/test/java/com/ningmeng/manage_course/dao/TestDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
         </state>
       </provider>
     </entry>
@@ -878,9 +973,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="550">
           <caret line="22" column="82" selection-start-line="22" selection-start-column="82" selection-end-line="22" selection-end-column="82" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -895,9 +987,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
           <caret line="44" column="45" selection-start-line="44" selection-start-column="38" selection-end-line="44" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -905,9 +994,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
           <caret line="5" column="79" selection-start-line="5" selection-start-column="79" selection-end-line="5" selection-end-column="79" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -929,9 +1015,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -939,9 +1022,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="6" column="63" selection-start-line="6" selection-start-column="63" selection-end-line="6" selection-end-column="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -949,9 +1029,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="719">
           <caret line="52" column="25" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -985,9 +1062,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nm-overn-center/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/nm-overn-center/pom.xml" />
     <entry file="file://$PROJECT_DIR$/nm-framework-model/pom.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1005,11 +1080,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="9" column="25" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#350#351#0" expanded="true" />
-            <element signature="e#426#427#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1036,39 +1106,109 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/nm-service-manage-course/src/main/resources/application.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="29" column="88" selection-start-line="29" selection-start-column="88" selection-end-line="29" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nm-service-manage-course/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="90" column="21" selection-start-line="90" selection-start-column="21" selection-end-line="90" selection-end-column="21" />
+        <state relative-caret-position="375">
+          <caret line="15" column="39" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/nm-service-manage-cms/src/main/resources/application.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="19" column="88" selection-start-line="19" selection-start-column="88" selection-end-line="19" selection-end-column="88" />
+        <state relative-caret-position="-200">
+          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nm-service-manage-course/src/test/java/com/ningmeng/manage_course/dao/TestDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nm-service-manage-course/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="98" column="21" selection-start-line="98" selection-start-column="21" selection-end-line="98" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nm-framework-common/src/main/java/com/ningmeng/framework/client/NmServiceList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="73" selection-start-line="9" selection-start-column="67" selection-end-line="9" selection-end-column="73" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/nm-service-manage-cms/src/main/java/com/ningmeng/manage_cms/ManageCmsApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="18" column="27" lean-forward="true" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="28" />
+        <state relative-caret-position="434">
+          <caret line="18" column="26" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/nm-framework-model/src/main/java/com/ningmeng/framework/domain/cms/CmsPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="20" column="25" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/nm-service-manage-course/src/main/java/com/ningmeng/manage_course/ManageCourseApplication.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="25" column="25" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1190#1191#0" expanded="true" />
+            <element signature="e#1269#1270#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nm-service-manage-course/src/test/java/com/ningmeng/manage_course/dao/Tests.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
-          <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="27" />
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nm-service-manage-course/src/main/java/com/ningmeng/manage_course/client/CmsPageClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nm-service-manage-cms/src/main/java/com/ningmeng/manage_cms/service/CmsPageService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="97" column="49" lean-forward="true" selection-start-line="97" selection-start-column="49" selection-end-line="97" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nm-service-manage-course/src/test/java/com/ningmeng/manage_course/dao/TestFeign.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nm-service-manage-cms/src/main/java/com/ningmeng/manage_cms/controller/CmsPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="39" column="10" lean-forward="true" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -1124,7 +1264,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>nm-govern-center</last-edited>
+          <last-edited>nm-service-manage-course</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
