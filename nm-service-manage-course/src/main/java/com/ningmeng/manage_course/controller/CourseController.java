@@ -6,7 +6,9 @@ import com.ningmeng.framework.domain.course.CourseMarket;
 import com.ningmeng.framework.domain.course.CoursePic;
 import com.ningmeng.framework.domain.course.Teachplan;
 import com.ningmeng.framework.domain.course.ext.CategoryNode;
+import com.ningmeng.framework.domain.course.ext.CourseView;
 import com.ningmeng.framework.domain.course.ext.TeachplanNode;
+import com.ningmeng.framework.domain.course.response.CoursePublishResult;
 import com.ningmeng.framework.domain.system.SysDictionary;
 import com.ningmeng.framework.model.response.QueryResponseResult;
 import com.ningmeng.framework.model.response.ResponseResult;
@@ -73,6 +75,19 @@ public class CourseController implements CourseControllerApi {
     @DeleteMapping("/coursepic/delete")
     public ResponseResult deleteCoursePic(@RequestParam("courseId") String courseId) {
         return courseService.deleteCoursePic(courseId);
+    }
+
+    @Override
+    @PostMapping("/preview/{id}")
+    public CoursePublishResult preview(@PathVariable("id") String id) {
+        return courseService.preview(id);
+    }
+
+    //课程视图查询
+    @Override
+    @GetMapping("/courseview/{id}")
+    public CourseView courseview(@PathVariable("id") String id) {
+        return courseService.courseview(id);
     }
 
     //查询课程计划

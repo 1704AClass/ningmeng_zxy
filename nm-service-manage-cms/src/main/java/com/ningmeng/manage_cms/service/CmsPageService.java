@@ -5,6 +5,7 @@ import com.ningmeng.framework.domain.cms.CmsPage;
 import com.ningmeng.framework.domain.cms.request.QueryPageRequest;
 import com.ningmeng.framework.domain.cms.response.CmsCode;
 import com.ningmeng.framework.domain.cms.response.CmsPageResult;
+import com.ningmeng.framework.domain.course.response.CoursePublishResult;
 import com.ningmeng.framework.exception.CustomExceptionCast;
 import com.ningmeng.framework.model.response.*;
 import com.ningmeng.manage_cms.config.RabbitmqConfig;
@@ -80,7 +81,7 @@ public class CmsPageService {
         //判断页面是否存在，根据站点id,页面名称，页面webpath
         CmsPage cmsPage1 = cmsPageRepository.findByPageNameAndSiteIdAndPageWebPath(cmsPage.getPageName(), cmsPage.getSiteId(), cmsPage.getPageWebPath());
         if (cmsPage1 != null) {
-            //抛出异常
+            //抛出异常 CMS_ADDPAGE_EXISTSNAME
             CustomExceptionCast.cast(CmsCode.CMS_ADDPAGE_EXISTSNAME);
         }
         //页面主键id由spring data自动生成
@@ -158,5 +159,19 @@ public class CmsPageService {
         String siteId= cmsPage.getSiteId();
         //发布消息
         this.rabbitTemplate.convertAndSend(RabbitmqConfig.EX_ROUTING_CMS_POSTPAGE,siteId, msg);
+    }
+
+    public String preview(String cmsPageId) {
+        //模板Id
+        Optional<CmsPage> cmsPageOptional = cmsPageRepository.findById(cmsPageId);
+        if(!cmsPageOptional.isPresent()){
+            CustomExceptionCast.cast(CommonCode.SERVER_ERROR);
+        }
+        CmsPage cmsPage = cmsPageOptional.get();
+        //根据cmsPage.getTemplateId()获得GridFS中保存模板文件
+        //获得静态化模型数据
+        //生成静态化文件内容
+        return "";
+
     }
 }

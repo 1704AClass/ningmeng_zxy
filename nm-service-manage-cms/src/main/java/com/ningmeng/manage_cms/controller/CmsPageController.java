@@ -4,6 +4,7 @@ import com.ningmeng.api.cmsapi.CmsPageControllerApi;
 import com.ningmeng.framework.domain.cms.CmsPage;
 import com.ningmeng.framework.domain.cms.request.QueryPageRequest;
 import com.ningmeng.framework.domain.cms.response.CmsPageResult;
+import com.ningmeng.framework.domain.course.response.CoursePublishResult;
 import com.ningmeng.framework.model.response.QueryResponseResult;
 import com.ningmeng.framework.model.response.ResponseResult;
 import com.ningmeng.manage_cms.service.CmsPageService;
@@ -18,6 +19,11 @@ import org.springframework.web.bind.annotation.*;
 public class CmsPageController implements CmsPageControllerApi {
     @Autowired
     CmsPageService cmsPageService;
+
+    @GetMapping("/preview/{id}")
+    public String preview(@PathVariable("id") String cmsPageId) {
+        return cmsPageService.preview(cmsPageId);
+    }
 
     //分页条件查询
     @Override
