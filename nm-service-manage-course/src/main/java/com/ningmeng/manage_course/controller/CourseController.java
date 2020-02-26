@@ -77,6 +77,14 @@ public class CourseController implements CourseControllerApi {
         return courseService.deleteCoursePic(courseId);
     }
 
+    //课程发布
+    @Override
+    @PostMapping("/publish/{id}")
+    public CoursePublishResult publish(@PathVariable String id) {
+        return courseService.publish(id);
+    }
+
+    //课程预览
     @Override
     @PostMapping("/preview/{id}")
     public CoursePublishResult preview(@PathVariable("id") String id) {
