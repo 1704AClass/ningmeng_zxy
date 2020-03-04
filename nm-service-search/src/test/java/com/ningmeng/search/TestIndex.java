@@ -378,12 +378,12 @@ public class TestIndex {
                 new String[]{});
         searchRequest.source(searchSourceBuilder);
         //匹配关键字
-       /* MultiMatchQueryBuilder multiMatchQueryBuilder = QueryBuilders.multiMatchQuery("开发",
+       MultiMatchQueryBuilder multiMatchQueryBuilder = QueryBuilders.multiMatchQuery("开发",
                 "name", "description");
-        searchSourceBuilder.query(multiMatchQueryBuilder);*/
+        searchSourceBuilder.query(multiMatchQueryBuilder);
         //布尔查询
         BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();
-        //boolQueryBuilder.must(searchSourceBuilder.query());
+        boolQueryBuilder.must(searchSourceBuilder.query());
         //过虑
         boolQueryBuilder.filter(QueryBuilders.rangeQuery("price").gte(0).lte(100));
         //排序

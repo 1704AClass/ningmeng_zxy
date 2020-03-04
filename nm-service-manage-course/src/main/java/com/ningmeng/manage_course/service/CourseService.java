@@ -1,14 +1,13 @@
 package com.ningmeng.manage_course.service;
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.netflix.discovery.converters.Auto;
 import com.ningmeng.framework.domain.cms.CmsPage;
 import com.ningmeng.framework.domain.cms.response.CmsPageResult;
 import com.ningmeng.framework.domain.cms.response.CmsPostPageResult;
-import com.ningmeng.framework.domain.course.CourseBase;
-import com.ningmeng.framework.domain.course.CourseMarket;
-import com.ningmeng.framework.domain.course.CoursePic;
-import com.ningmeng.framework.domain.course.Teachplan;
+import com.ningmeng.framework.domain.course.*;
 import com.ningmeng.framework.domain.course.ext.CourseInfo;
 import com.ningmeng.framework.domain.course.ext.CourseView;
 import com.ningmeng.framework.domain.course.response.AddCourseResult;
@@ -22,12 +21,15 @@ import com.ningmeng.framework.model.response.ResponseResult;
 import com.ningmeng.manage_course.client.CmsPageClient;
 import com.ningmeng.manage_course.dao.*;
 import com.ningmeng.framework.domain.course.ext.TeachplanNode;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -69,6 +71,71 @@ public class CourseService {
     @Autowired
     private CmsPageClient cmsPageClient;
 
+    @Autowired
+    private CoursePubRepository coursePubRepository;
+
+    //保存CoursePub
+    public CoursePub saveCoursePub(String courseId,CoursePub coursePub){
+        CoursePub coursePubNew = null;
+        Optional<CoursePub> coursePubOptional = coursePubRepository.findById(courseId);
+        if(coursePubOptional.isPresent()){
+            //更新
+            coursePubNew = coursePubOptional.get();
+        }else{
+            //添加
+            coursePubNew = new CoursePub();
+        }
+        BeanUtils.copyProperties(coursePub,coursePubNew);
+        //设置主键
+        coursePubNew.setId(id);
+        // 更新时间戳为最新时间
+        coursePub.setTimestamp(new Date());
+        //发布时间
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy‐MM‐dd HH:mm:ss");
+        String date = simpleDateFormat.format(new Date());
+        coursePub.setPubTime(date);
+        coursePubRepository.save(coursePub);
+        return coursePub;
+    }
+
+    //创建coursePub对象
+    public CoursePub createCoursePub(String courseId){
+        CoursePub coursePub = new CoursePub();
+
+        //先同步ID
+        coursePub.setId(courseId);
+
+        //课程基本信息
+        Optional<CourseBase> courseBaseOptional = courseBaseRepository.findById(courseId);
+        if(courseBaseOptional.isPresent()){
+            //从基本信息中得到字段然后同步到coursePub表中
+            BeanUtils.copyProperties(courseBaseOptional.get(),coursePub);
+        }
+
+        //查询课程图片
+        Optional<CoursePic> picOptional = coursePicRepository.findById(courseId);
+        if(picOptional.isPresent()){
+            BeanUtils.copyProperties(courseBaseOptional.get(),coursePub);
+        }
+
+        //课程营销信息
+        Optional<CourseMarket> marketOptional = courseMarketRepository.findById(courseId);
+        if(marketOptional.isPresent()){
+            BeanUtils.copyProperties(marketOptional.get(),coursePub);
+        }
+
+        //课程计划
+        TeachplanNode teachplanNode = teachplanMapper.findTeachplanList(courseId);
+        if(teachplanNode != null && !"".equals(teachplanNode)){
+            //将课程计划转成json
+            String teachplanString = JSON.toJSONString(teachplanNode);
+            coursePub.setTeachplan(teachplanString);
+        }
+
+        return coursePub;
+
+    }
+
     //课程发布
     @Transactional
     public CoursePublishResult publish(String courseId){
@@ -81,8 +148,11 @@ public class CourseService {
         }
         //更新课程状态
         CourseBase courseBase = saveCoursePubState(courseId);
-        //课程索引...
-        // 课程缓存...
+        
+        //更新索引库
+        CoursePub coursePub = createCoursePub(courseId);
+        this.saveCoursePub(courseId,coursePub);
+
         // 页面url
         String pageUrl = cmsPostPageResult.getPageUrl();
         return new CoursePublishResult(CommonCode.SUCCESS,pageUrl);
