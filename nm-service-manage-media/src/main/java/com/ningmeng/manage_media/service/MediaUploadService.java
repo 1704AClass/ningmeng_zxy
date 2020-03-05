@@ -1,5 +1,6 @@
 package com.ningmeng.manage_media.service;
 
+import com.alibaba.fastjson.JSON;
 import com.ningmeng.framework.domain.media.MediaFile;
 import com.ningmeng.framework.domain.media.response.CheckChunkResult;
 import com.ningmeng.framework.domain.media.response.MediaCode;
@@ -7,9 +8,11 @@ import com.ningmeng.framework.exception.CustomException;
 import com.ningmeng.framework.exception.CustomExceptionCast;
 import com.ningmeng.framework.model.response.CommonCode;
 import com.ningmeng.framework.model.response.ResponseResult;
+import com.ningmeng.manage_media.config.RabbitMQConfig;
 import com.ningmeng.manage_media.dao.MediaFileRepository;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -27,6 +30,11 @@ public class MediaUploadService {
     //nm-service-manage-media.upload-location
     @Value("${nm-service-manage-media.upload-location}")
     String uploadPath;
+    @Value("{nm-service-manage-media.mq.routingkey-media-video}")
+    private String routingkey_media_video;
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
     //获取文件根目录
     /**
@@ -97,7 +105,7 @@ public class MediaUploadService {
      * @param fileExt
      * @return
      */
-    public ResponseResult register(String fileMd5, String fileName, String fileSize, String mimetype, String fileExt) {
+    public ResponseResult register(String fileMd5, String fileName, Long fileSize, String mimetype, String fileExt) {
 
         //检查文件是否上传过
         //1、得到文件的路径
@@ -196,7 +204,7 @@ public class MediaUploadService {
             chunkfileFolder.mkdirs();
         }
         //合并文件路径
-        String mergeFilePath = getFileFolderPath(fileMd5, fileExt);
+        String mergeFilePath = getFilePath(fileMd5, fileExt);
         File mergeFile = new File(mergeFilePath);
         if(mergeFile.exists()){
             //如果存在先删除再创建
@@ -216,7 +224,7 @@ public class MediaUploadService {
         //合并文件
         File file = this.mergeFile(mergeFile, chunkFiles);
         //校验文件(md5值)    为了保证合并的成功性
-        boolean bool = this.checkFileMd5(mergeFile);
+        boolean bool = this.checkFileMd5(mergeFile,fileMd5);
         if(!bool){
             CustomExceptionCast.cast(MediaCode.MERGE_FILE_CHECKFAIL);
         }
@@ -233,7 +241,24 @@ public class MediaUploadService {
         //状态为上传成功
         mediaFile.setFileStatus("301002");
         mediaFileRepository.save(mediaFile);
+        //发送处理视频编码
+        boolean flag = sendProcessVideoMsg(fileMd5);
+        if(!flag){
+            CustomExceptionCast.cast(MediaCode.MERGE_FILE_CHECKFAIL);
+        }
         return new ResponseResult(CommonCode.SUCCESS);
+    }
+
+    private boolean sendProcessVideoMsg(String fileMd5){
+        try {
+            Map map = new HashMap();
+            map.put("mediaId",fileMd5);
+            String msg = JSON.toJSONString(map);
+            rabbitTemplate.convertAndSend(RabbitMQConfig.EX_MEDIA_PROCESSTASK,routingkey_media_video,msg);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 
     //获取所有块文件
@@ -259,7 +284,7 @@ public class MediaUploadService {
      * @param chunkFiles  分块文件列表
      * @return
      */
-    private File mergeFile(File mergeFile,List<File> chunkFiles){
+    private File mergeFile(File mergeFile,File[] chunkFiles){
         try {
             RandomAccessFile raf_write = new RandomAccessFile(mergeFile,"rw");
             byte[] b = new byte[1024];
@@ -289,7 +314,7 @@ public class MediaUploadService {
         try {
             inputStream = new FileInputStream(mergeFile);
             //先计算
-            String mergeFileMd5 = DigestUtils.md5Hex(inputStream);f
+            String mergeFileMd5 = DigestUtils.md5Hex(inputStream);
             if(mergeFileMd5.equalsIgnoreCase(md5)){
                 return true;
             }
