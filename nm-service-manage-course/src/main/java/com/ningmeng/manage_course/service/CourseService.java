@@ -29,6 +29,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -74,6 +75,68 @@ public class CourseService {
     @Autowired
     private CoursePubRepository coursePubRepository;
 
+    @Autowired
+    private TeachplanMediaRepository teachplanMediaRepository;
+
+    @Autowired
+    private TeachplanMediaPubRepository teachplanMediaPubRepository;
+
+    //保存课程计划媒资信息
+    private void saveTeachplanMediaPub(String courseId){
+        if(courseId == null || "".equals(courseId)){
+            CustomExceptionCast.cast(CommonCode.SUCCESS);
+        }
+        //先删除
+        teachplanMediaPubRepository.deleteByCourseId(courseId);
+        //查询课程媒资信息
+        List<TeachplanMedia> teachplanMediaList = teachplanMediaRepository.findByCourseId(courseId);
+        List<TeachplanMediaPub> teachplanMediaPubList = new ArrayList<>();
+        for(TeachplanMedia teachplanMedia:teachplanMediaList){
+            TeachplanMediaPub teachplanMediaPub =new TeachplanMediaPub();
+            BeanUtils.copyProperties(teachplanMedia,teachplanMediaPub);
+            teachplanMediaPubList.add(teachplanMediaPub);
+        }
+        teachplanMediaPubRepository.saveAll(teachplanMediaPubList);
+    }
+
+    //保存媒资信息
+    public ResponseResult savemedia(TeachplanMedia teachplanMedia) {
+        if(teachplanMedia==null){
+            //给出对应的提示信息
+            CustomExceptionCast.cast(CourseCode.COURSE_MEDIS_NAMEISNULL);
+        }
+        //通过teachplanMedia 可以获得teachplanId
+        String teachPlanId = teachplanMedia.getTeachplanId();
+        if("".equals(teachPlanId) || teachPlanId == null){
+            CustomExceptionCast.cast(CourseCode.COURSE_MEDIS_NAMEISNULL);
+        }
+        //根据teachplanId去计划表中 查询节点是否是第三级
+        Optional<Teachplan> optional = teachplanRepository.findById(teachPlanId);
+        if(!optional.isPresent()){
+            CustomExceptionCast.cast(CourseCode.COURSE_MEDIS_NAMEISNULL);
+        }
+        //不为空
+        if(!optional.get().getGrade().equals("3")){
+            CustomExceptionCast.cast(CourseCode.COURSE_MEDIS_NAMEISNULL);
+        }
+        TeachplanMedia teachplanMedia1 = null;
+        //如果修改现在进行覆盖
+        Optional<TeachplanMedia> optional1 = teachplanMediaRepository.findById(teachPlanId);
+        if(optional1.isPresent()){
+            teachplanMedia1 = optional1.get();
+        }else{
+            teachplanMedia1 = new TeachplanMedia();
+        }
+        //保存媒资信息与课程计划信息
+        teachplanMedia1.setTeachplanId(teachPlanId);
+        teachplanMedia1.setCourseId(teachplanMedia.getCourseId());
+        teachplanMedia1.setMediaFileOriginalName(teachplanMedia.getMediaFileOriginalName());
+        teachplanMedia1.setMediaId(teachplanMedia.getMediaId());
+        teachplanMedia1.setMediaUrl(teachplanMedia.getMediaUrl());
+        teachplanMediaRepository.save(teachplanMedia1);
+        return new ResponseResult(CommonCode.SUCCESS);
+    }
+
     //保存CoursePub
     public CoursePub saveCoursePub(String courseId,CoursePub coursePub){
         CoursePub coursePubNew = null;
@@ -87,7 +150,7 @@ public class CourseService {
         }
         BeanUtils.copyProperties(coursePub,coursePubNew);
         //设置主键
-        coursePubNew.setId(id);
+        coursePubNew.setId(courseId);
         // 更新时间戳为最新时间
         coursePub.setTimestamp(new Date());
         //发布时间
@@ -152,6 +215,9 @@ public class CourseService {
         //更新索引库
         CoursePub coursePub = createCoursePub(courseId);
         this.saveCoursePub(courseId,coursePub);
+
+        //更新课程媒资计划信息
+        this.saveTeachplanMediaPub(courseId);
 
         // 页面url
         String pageUrl = cmsPostPageResult.getPageUrl();

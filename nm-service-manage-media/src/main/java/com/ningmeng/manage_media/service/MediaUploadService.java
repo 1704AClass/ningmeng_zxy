@@ -4,14 +4,16 @@ import com.alibaba.fastjson.JSON;
 import com.ningmeng.framework.domain.media.MediaFile;
 import com.ningmeng.framework.domain.media.response.CheckChunkResult;
 import com.ningmeng.framework.domain.media.response.MediaCode;
-import com.ningmeng.framework.exception.CustomException;
 import com.ningmeng.framework.exception.CustomExceptionCast;
 import com.ningmeng.framework.model.response.CommonCode;
 import com.ningmeng.framework.model.response.ResponseResult;
 import com.ningmeng.manage_media.config.RabbitMQConfig;
+import com.ningmeng.manage_media.controller.MediaUploadController;
 import com.ningmeng.manage_media.dao.MediaFileRepository;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,14 +25,14 @@ import java.util.*;
 
 @Service
 public class MediaUploadService {
-
+    private final static Logger LOGGER = LoggerFactory.getLogger(MediaUploadController.class);
     @Autowired
     private MediaFileRepository mediaFileRepository;
 
     //nm-service-manage-media.upload-location
     @Value("${nm-service-manage-media.upload-location}")
     String uploadPath;
-    @Value("{nm-service-manage-media.mq.routingkey-media-video}")
+    @Value("${nm-service-manage-media.mq.routingkey-media-video}")
     private String routingkey_media_video;
 
     @Autowired
@@ -241,24 +243,33 @@ public class MediaUploadService {
         //状态为上传成功
         mediaFile.setFileStatus("301002");
         mediaFileRepository.save(mediaFile);
-        //发送处理视频编码
-        boolean flag = sendProcessVideoMsg(fileMd5);
-        if(!flag){
-            CustomExceptionCast.cast(MediaCode.MERGE_FILE_CHECKFAIL);
-        }
+        String mediaId = mediaFile.getFileId();
+        //向MQ发送视频处理消息
+        sendProcessVideoMsg(mediaId);
         return new ResponseResult(CommonCode.SUCCESS);
     }
-
-    private boolean sendProcessVideoMsg(String fileMd5){
-        try {
-            Map map = new HashMap();
-            map.put("mediaId",fileMd5);
-            String msg = JSON.toJSONString(map);
-            rabbitTemplate.convertAndSend(RabbitMQConfig.EX_MEDIA_PROCESSTASK,routingkey_media_video,msg);
-            return true;
-        }catch (Exception e){
-            return false;
+    //向MQ发送视频处理消息
+    private ResponseResult sendProcessVideoMsg(String mediaId) {
+        Optional<MediaFile> optional = mediaFileRepository.findById(mediaId);
+        if(!optional.isPresent()){
+            return new ResponseResult(CommonCode.FAIL);
         }
+        MediaFile mediaFile = optional.get();
+        //发送视频处理消息
+        Map<String,String> msgMap = new HashMap<>();
+        msgMap.put("mediaId",mediaId);
+        //发送的消息
+        String msg = JSON.toJSONString(msgMap);
+        try {
+            this.rabbitTemplate.convertAndSend(RabbitMQConfig.EX_MEDIA_PROCESSTASK,routingkey_media_video,msg);
+
+            LOGGER.info("send media process task msg:{}",msg);
+        }catch (Exception e){
+            e.printStackTrace();
+            LOGGER.info("send media process task error,msg is:{},error:{}",msg,e.getMessage());
+            return new ResponseResult(CommonCode.FAIL);
+        }
+        return new ResponseResult(CommonCode.SUCCESS);
     }
 
     //获取所有块文件

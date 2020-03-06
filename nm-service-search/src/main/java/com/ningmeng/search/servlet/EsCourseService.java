@@ -23,6 +23,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 @Service
@@ -37,6 +38,48 @@ public class EsCourseService {
     private String sourcefield;
     @Autowired
     private RestHighLevelClient restHighLevelClient;
+
+    public Map<String, CoursePub> getall(String id) {
+        //设置索引库
+        SearchRequest searchRequest = new SearchRequest(es_index);
+        searchRequest.types(ex_type);
+        //创建查询条件对象
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+
+        //绑定查询
+        searchSourceBuilder.query(QueryBuilders.termQuery("id",id));
+        //请求搜索
+        searchRequest.source(searchSourceBuilder);
+        SearchResponse searchResponse = null;
+        try {
+            searchResponse = restHighLevelClient.search(searchRequest);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        SearchHits searchHits = searchResponse.getHits();
+        SearchHit[] hits = searchHits.getHits();
+        Map<String,CoursePub> map = new HashMap<>();
+        for (SearchHit hit : searchHits) {
+            String courseId = hit.getId();
+            Map<String, Object> sourceAsMap = hit.getSourceAsMap();
+            String courseIds = (String) sourceAsMap.get("id");
+            String name = (String) sourceAsMap.get("name");
+            String grade = (String) sourceAsMap.get("grade");
+            String charge = (String) sourceAsMap.get("charge");
+            String pic = (String) sourceAsMap.get("pic");
+            String description = (String) sourceAsMap.get("description");
+            String teachplan = (String) sourceAsMap.get("teachplan");
+            CoursePub coursePub = new CoursePub();
+            coursePub.setId(courseIds);
+            coursePub.setName(name);
+            coursePub.setPic(pic);
+            coursePub.setGrade(grade);
+            coursePub.setTeachplan(teachplan);
+            coursePub.setDescription(description);
+            map.put(courseId,coursePub);
+        }
+        return map;
+    }
 
     /**
      * 关键字查询
