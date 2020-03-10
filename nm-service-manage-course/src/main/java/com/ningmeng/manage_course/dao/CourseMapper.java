@@ -5,6 +5,7 @@ import com.ningmeng.framework.domain.course.CourseBase;
 import com.ningmeng.framework.domain.course.ext.CourseInfo;
 import com.ningmeng.framework.domain.course.request.CourseListRequest;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * Created by Administrator.
@@ -18,5 +19,5 @@ public interface CourseMapper {
     * @param companyId  公司ID
     * @return
     */
-   Page<CourseInfo> findCourseListPage(String companyId);
+   Page<CourseInfo> findCourseListPage(@Param("id") String id);
 }

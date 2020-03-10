@@ -8,6 +8,6 @@
     </select>
 
     <select id="findCourseListPage" resultType="com.ningmeng.framework.domain.course.ext.CourseInfo" parameterType="java.lang.String">
-            SELECT * FROM course_base b LEFT JOIN course_pic p ON b.id = p.courseid where b.company_id = #{companyId}
+            SELECT * FROM course_base b LEFT JOIN course_pic p ON b.id = p.courseid where b.id = #{id}
     </select>
 </mapper>

@@ -17,7 +17,7 @@ public class TeachplanMediaPub implements Serializable {
     private static final long serialVersionUID = -916357110051689485L;
 
     @Id
-    @GeneratedValue(generator = "jpa‐assigned")
+    @GeneratedValue(generator = "jpa-assigned")
     @Column(name="teachplan_id")
     private String teachplanId;
 

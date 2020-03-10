@@ -81,7 +81,10 @@ public class CourseService {
     @Autowired
     private TeachplanMediaPubRepository teachplanMediaPubRepository;
 
-    //保存课程计划媒资信息
+    /**
+     * 同步课程媒资信息
+     * @param courseId
+     */
     private void saveTeachplanMediaPub(String courseId){
         if(courseId == null || "".equals(courseId)){
             CustomExceptionCast.cast(CommonCode.SUCCESS);
@@ -355,15 +358,15 @@ public class CourseService {
      * @return
      */
     @Transactional
-    public QueryResponseResult findCourseList(int page, int pagesize, String companyId) {
+    public QueryResponseResult findCourseList(int page, int pagesize, String id) {
 
-        if (companyId == null || "".equals(companyId)) {
+        if (id == null || "".equals(id)) {
             CustomExceptionCast.cast(CommonCode.FAIL);
         }
 
         PageHelper.startPage(page, pagesize);
         //这中间不能有sql
-        Page<CourseInfo> pageAll = courseMapper.findCourseListPage(companyId);
+        Page<CourseInfo> pageAll = courseMapper.findCourseListPage(id);
 
         QueryResult queryResult = new QueryResult();
         queryResult.setList(pageAll.getResult());
