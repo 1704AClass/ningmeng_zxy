@@ -33,7 +33,7 @@ auth:
   tokenValiditySeconds: 1200  #token存储到redis的过期时间
   clientId: NmWebApp
   clientSecret: NmWebApp
-  cookieDomain: localhost #cookie存在的地址 ucenter.ningmeng.com
+  cookieDomain: ucenter.ningmeng.com #cookie存在的地址 ucenter.ningmeng.com
   cookieMaxAge: -1 #随浏览器关闭销毁跟随session
 encrypt:
   key-store:

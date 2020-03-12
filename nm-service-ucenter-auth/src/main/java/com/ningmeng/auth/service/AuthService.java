@@ -45,6 +45,23 @@ public class AuthService {
     @Autowired
     StringRedisTemplate stringRedisTemplate;
 
+    //从redis查询令牌
+    public AuthToken getUserToken(String token){
+        String userToken = "user_token:"+token;
+        String userTokenString = stringRedisTemplate.opsForValue().get(userToken);
+        if(userToken!=null){
+            AuthToken authToken = null;
+            try {
+                authToken = JSON.parseObject(userTokenString, AuthToken.class);
+            } catch (Exception e) {
+                LOGGER.error("getUserToken from redis and execute JSON.parseObject error {}",e.getMessage());
+                e.printStackTrace();
+            }
+                return authToken;
+        }
+        return null;
+    }
+
     public AuthToken login(String username,String password,String clientId,String clientSecret){
         //1、申请令牌
         AuthToken authToken = applyToken(username,password,clientId, clientSecret);
@@ -84,9 +101,9 @@ public class AuthService {
         //授权方式
         body.add("grant_type","password");
         //账号
-        body.add("username","ningmeng");
+        body.add("username",username);
         //密码
-        body.add("password","1234");
+        body.add("password",password);
         //定义头
         //heard信息
         MultiValueMap<String,String> heards = new LinkedMultiValueMap();

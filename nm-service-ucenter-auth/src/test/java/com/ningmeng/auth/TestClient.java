@@ -15,6 +15,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.ClientHttpResponse;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.Base64Utils;
 import org.springframework.util.LinkedMultiValueMap;
@@ -64,7 +66,7 @@ public class TestClient {
         MultiValueMap<String,String> body = new LinkedMultiValueMap();
         body.add("grant_type","password");
         body.add("username","ningmeng");
-        body.add("password","1234");
+        body.add("password","123");
 
         HttpEntity<MultiValueMap<String,String>> httpEntity = new HttpEntity<>(body,heards);
         restTemplate.setErrorHandler(new DefaultResponseErrorHandler(){
@@ -85,6 +87,19 @@ public class TestClient {
         // , expires_in=43199
         // , scope=app
         // , jti=3082e1ee-a38a-4d26-9c98-a0d590da9c87
+    }
+
+    @Test
+    public void testPasswrodEncoder(){
+        String password = "111111";
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        for(int i = 0; i<10; i++) {
+            //每个计算出的Hash值都不一样
+            String hashPass = passwordEncoder.encode(password); System.out.println(hashPass);
+            //虽然每次计算的密码Hash值不一样但是校验是通过的
+            boolean f = passwordEncoder.matches(password, hashPass);
+            System.out.println(f);
+        }
     }
 
 }
