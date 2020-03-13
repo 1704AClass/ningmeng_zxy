@@ -45,6 +45,13 @@ public class AuthService {
     @Autowired
     StringRedisTemplate stringRedisTemplate;
 
+    //从redis中删除令牌
+    public boolean delToken(String access_token){
+        String name = "user_token:" + access_token;
+        stringRedisTemplate.delete(name);
+        return true;
+    }
+
     //从redis查询令牌
     public AuthToken getUserToken(String token){
         String userToken = "user_token:"+token;

@@ -38,6 +38,12 @@ public class AuthController implements AuthControllerApi {
     @Autowired
     private AuthService authService;
 
+    @Autowired
+    private HttpServletRequest request;
+
+    @Autowired
+    private HttpServletResponse response;
+
     @Override
     @PostMapping("/userlogin")
     public LoginResult login(LoginRequest loginRequest) {
@@ -67,12 +73,22 @@ public class AuthController implements AuthControllerApi {
         CookieUtil.addCookie(response, cookieDomain, "/", "uid", token, cookieMaxAge, false);
     }
 
+    //退出
     @Override
     @PostMapping("/userlogout")
     public ResponseResult logout() {
-        return null;
+        //取出身份令牌
+        String uid = getTokenFormCookie();
+        //删除redis中token
+        authService.delToken(uid);
+        //清除cookie
+        clearCookie(uid);
+        return new ResponseResult(CommonCode.SUCCESS);
     }
-
+    //清除cookie
+    private void clearCookie(String token){
+        CookieUtil.addCookie(response, cookieDomain, "/", "uid", token, 0, false);
+    }
     @Override
     @GetMapping("/userjwt")
     public JwtResult userjwt() {
@@ -87,7 +103,6 @@ public class AuthController implements AuthControllerApi {
     }
     //从cookie中读取访问令牌
     private String getTokenFormCookie(){
-        
         Map<String, String> cookieMap = CookieUtil.readCookie(request, "uid");
         String access_token = cookieMap.get("uid");
         return access_token;
