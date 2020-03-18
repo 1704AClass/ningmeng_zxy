@@ -2,10 +2,13 @@ package com.ningmeng.order.service;
 
 import com.ningmeng.framework.domain.task.NmTask;
 import com.ningmeng.framework.domain.task.NmTaskHis;
+import com.ningmeng.framework.exception.CustomExceptionCast;
+import com.ningmeng.framework.model.response.CommonCode;
 import com.ningmeng.order.dao.NmTaskHisRepository;
 import com.ningmeng.order.dao.NmTaskRepository;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -20,46 +23,51 @@ import java.util.Optional;
 @Service
 public class TaskService {
 
-    @Resource
-    private NmTaskRepository nmTaskRepository;
+    @Autowired
+    NmTaskRepository nmTaskRepository;
 
     @Resource
     private NmTaskHisRepository nmTaskHisRepository;
 
-    @Resource
-    private RabbitTemplate rabbitTemplate;
+    @Autowired
+    RabbitTemplate rabbitTemplate;
 
-
-    //取出前n条任务，取出指定时间之前处理的任务
-    public List<NmTask> findTaskList(Date updateTime,int n){
-        //设置分页参数
-        Pageable pageable = new PageRequest(0,n);
-        Page<NmTask> nmTask = nmTaskRepository.findByUpdateTimeBefore(pageable,updateTime);
-        return nmTask.getContent();
+    //取出前n条任务,取出指定时间之前处理的任务
+    public List<NmTask> findTaskList(Date updateTime, int n){
+        //设置分页参数，取出前n 条记录
+        Pageable pageable = new PageRequest(0, n);
+        Page<NmTask> nmTasks = nmTaskRepository.findByUpdateTimeBefore(pageable,updateTime);
+        return nmTasks.getContent();
     }
-
-    @Transactional
-    public void publish(NmTask nmTask,String ex,String routingKey){
-        //查询任务
-        Optional<NmTask> taskOptional = nmTaskRepository.findById(nmTask.getId());
-        if(taskOptional.isPresent()){
-            nmTask = taskOptional.get();
-            //String exchange ,String  routingKey ,Object object
-            rabbitTemplate.convertAndSend(ex,routingKey,nmTask);
-            //更新任务时间为当前时间
-            nmTask.setUpdateTime(new Date());
-            nmTaskRepository.save(nmTask);
-        }
-
-    }
-
 
     @Transactional
     public int getTask(String taskId,int version){
-        int i = nmTaskRepository.updateTaskVersion(taskId,version);
+        int i = nmTaskRepository.updateTaskVersion(taskId, version);
         return i;
     }
 
+    /**
+     * //发送消息
+     * @param nmTask 任务对象
+     * @param ex 交换机id
+     * @param routingKey
+     */
+    @Transactional
+    public void publish(NmTask nmTask,String ex,String routingKey){
+        if(nmTask == null){
+            CustomExceptionCast.cast(CommonCode.FAIL);
+        }
+        //查询任务
+        Optional<NmTask> taskOptional = nmTaskRepository.findById(nmTask.getId());
+        if(taskOptional.isPresent()){
+            NmTask nmTask1 = taskOptional.get();
+            //String exchange, String routingKey, Object object
+            rabbitTemplate.convertAndSend(ex,routingKey,nmTask1);
+            //更新任务时间为当前时间
+            nmTask1.setUpdateTime(new Date());
+            nmTaskRepository.save(nmTask1);
+        }
+    }
 
     //删除任务
     @Transactional
@@ -69,18 +77,9 @@ public class TaskService {
             NmTask nmTask = taskOptional.get();
             nmTask.setDeleteTime(new Date());
             NmTaskHis nmTaskHis = new NmTaskHis();
-            BeanUtils.copyProperties(nmTask,nmTaskHis);
+            BeanUtils.copyProperties(nmTask, nmTaskHis);
             nmTaskHisRepository.save(nmTaskHis);
             nmTaskRepository.delete(nmTask);
         }
-
-
     }
-
-
-
-
-
-
-
 }

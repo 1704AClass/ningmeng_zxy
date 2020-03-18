@@ -7,7 +7,7 @@ ningmeng:
   elasticsearch:
     hostlist: ${eshostlist:127.0.0.1:9200} #多个结点中间用逗号分隔
   course:
-    index: nm_course
+    index: nm_course1
     media_index: nm_course_media
     type: nm_course
     media_type: doc

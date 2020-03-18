@@ -5,6 +5,7 @@ import com.ningmeng.framework.client.NmServiceList;
 import com.ningmeng.framework.domain.ucenter.ext.AuthToken;
 import com.ningmeng.framework.domain.ucenter.response.AuthCode;
 import com.ningmeng.framework.exception.CustomExceptionCast;
+import com.ningmeng.framework.model.response.CommonCode;
 import com.sun.org.apache.bcel.internal.generic.NEW;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;

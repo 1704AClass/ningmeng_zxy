@@ -9,9 +9,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMQConfig {
     //添加选课任务交换机
-    public static final String EX_LEARNING_ADDCHOOSECOURSE = "ex_learning_addchoosecourse";
-
-    //添加选课消息队列
     public static final String NM_LEARNING_ADDCHOOSECOURSE = "nm_learning_addchoosecourse";
 
     //完成添加选课消息队列
@@ -26,23 +23,16 @@ public class RabbitMQConfig {
      * 交换机配置
      * @return the exchange
      */
-    @Bean(EX_LEARNING_ADDCHOOSECOURSE)
+    @Bean(NM_LEARNING_ADDCHOOSECOURSE)
     public Exchange EX_DECLARE() {
-        return ExchangeBuilder.directExchange(EX_LEARNING_ADDCHOOSECOURSE).durable(true).build();
+        return ExchangeBuilder.directExchange(NM_LEARNING_ADDCHOOSECOURSE).durable(true).build();
     }
     //声明队列
-    @Bean(NM_LEARNING_FINISHADDCHOOSECOURSE)
+    @Bean("nm_learning_finishaddchoosecourse")
     public Queue QUEUE_DECLARE() {
         Queue queue = new Queue(NM_LEARNING_FINISHADDCHOOSECOURSE,true,false,true);
         return queue;
     }
-
-    @Bean(NM_LEARNING_ADDCHOOSECOURSE)
-    public Queue QUEUE_NM_LEARNING_ADDCHOOSECOURSE(){
-        Queue queue = new Queue(NM_LEARNING_ADDCHOOSECOURSE);
-        return queue;
-    }
-
     /**
      * 绑定队列到交换机 .
      * @param queue    the queue
@@ -50,36 +40,8 @@ public class RabbitMQConfig {
      * @return the binding
      */
     @Bean
-    public Binding BINDING_QUEUE_FINISHADDCHOOSECOURSE(@Qualifier(NM_LEARNING_FINISHADDCHOOSECOURSE) Queue queue,
-                                                       @Qualifier(EX_LEARNING_ADDCHOOSECOURSE) Exchange exchange){
+    public Binding binding_queue_media_processtask(@Qualifier("nm_learning_finishaddchoosecourse") Queue queue, @Qualifier(NM_LEARNING_ADDCHOOSECOURSE) Exchange exchange) {
         return BindingBuilder.bind(queue).to(exchange).with(NM_LEARNING_FINISHADDCHOOSECOURSE_KEY).noargs();
     }
-
-
-    @Bean
-    public Binding binding_queue_media_processtask(@Qualifier("nm_learning_finishaddchoosecourse") Queue queue, @Qualifier(EX_LEARNING_ADDCHOOSECOURSE) Exchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with(NM_LEARNING_FINISHADDCHOOSECOURSE_KEY).noargs();
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 
 @EnableDiscoveryClient
 @EnableFeignClients
-@EntityScan(value={"com.ningmeng.framework.domain.order","com.xuecheng.framework.domain.task"})//扫描实体类
+@EntityScan(value={"com.ningmeng.framework.domain.order","com.ningmeng.framework.domain.task"})//扫描实体类
 @ComponentScan(basePackages={"com.ningmeng.api"})//扫描接口
 @ComponentScan(basePackages={"com.ningmeng.framework"})//扫描framework中通用类
 @ComponentScan(basePackages={"com.ningmeng.order"})//扫描本项目下的所有类
